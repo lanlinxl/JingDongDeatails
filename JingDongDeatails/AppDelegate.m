@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-
+#import "ViewController.h"
 @interface AppDelegate ()
 
 @end
@@ -16,7 +16,20 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:[[ViewController alloc] init]];
+    
+    //自定义导航栏的返回按钮和背景图片
+    [[UINavigationBar appearance] setBackIndicatorImage:[UIImage imageNamed:@"back"]];
+    [[UINavigationBar appearance] setBackIndicatorTransitionMaskImage:[UIImage imageNamed:@"back"]];
+    [[UIBarButtonItem appearance] setBackButtonTitlePositionAdjustment:UIOffsetMake(-100, 0) forBarMetrics:UIBarMetricsDefault];
+    [[UINavigationBar appearance] setTintColor:[UIColor lightGrayColor]];
+    
+    self.window = [[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
+    self.window.backgroundColor = [UIColor whiteColor];
+    self.window.rootViewController = nav;
+    [self.window makeKeyAndVisible];
+    
     return YES;
 }
 
